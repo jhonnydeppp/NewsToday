@@ -1,4 +1,4 @@
-package com.hostienda.betting.base.mvp
+package com.jhonnydev.newstoday.base.mvp
 
 interface BaseContract {
 
@@ -24,7 +24,7 @@ interface BaseContract {
      * Este es el contrato del Presentador a la Vista, el cual se va a encargar de recibir la respuesta de servicios web.
      */
 
-    interface ServicePresenter:BaseContract.Presenter{
+    interface ServicePresenter: Presenter {
          fun onUnknownError(error: String, caller: String)
 
          fun onTimeoutError(caller: String)

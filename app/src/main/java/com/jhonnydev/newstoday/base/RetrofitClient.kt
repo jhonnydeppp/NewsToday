@@ -1,4 +1,4 @@
-package com.hostienda.betting.base
+package com.jhonnydev.newstoday.base
 
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -6,15 +6,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import com.google.gson.GsonBuilder
-import com.google.gson.Gson
-
 
 
 object RetrofitClient {
 
     private var retrofit: Retrofit? = null
 
-    const val BASE_URL = "https://betting-v1.herokuapp.com/api/"
+    const val BASE_URL = "http://newsapi.org/v2/"
     var gson = GsonBuilder()
         .setLenient()
         .create()

@@ -1,4 +1,4 @@
-package com.hostienda.betting.base.models
+package com.jhonnydev.newstoday.base.models
 
 import com.google.gson.annotations.SerializedName
 

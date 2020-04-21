@@ -1,7 +1,8 @@
-package com.hostienda.betting.base.observer
+package com.jhonnydev.newstoday.base.observer
 
 import android.util.Log
-import com.hostienda.betting.base.mvp.BaseContract
+
+import com.jhonnydev.newstoday.base.mvp.BaseContract
 import io.reactivex.observers.DisposableObserver
 import retrofit2.HttpException
 import java.io.IOException
