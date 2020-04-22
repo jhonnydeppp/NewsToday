@@ -3,6 +3,8 @@
     <string name="title_news">News</string>
     <string name="title_favorites">Favorites</string>
     <string name="article_image_content_descriontion">A image of the current notice</string>
+    <string name="article_image_favorite_content_descriontion">A image to know is article
+        is favorite or no</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

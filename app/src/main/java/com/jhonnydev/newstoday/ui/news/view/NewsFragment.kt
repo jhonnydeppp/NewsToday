@@ -13,6 +13,7 @@ import com.jhonnydev.newstoday.ui.news.adapters.NewsAdapter
 import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 import com.jhonnydev.newstoday.ui.news.mvp.ContractNews
 import com.jhonnydev.newstoday.ui.news.mvp.PresenterNews
+import com.jhonnydev.newstoday.utils.PreferencesUtils
 import com.jhonnydev.newstoday.utils.Utils
 import kotlinx.android.synthetic.main.fragment_news.*
 
@@ -46,6 +47,7 @@ class NewsFragment : Fragment() , ContractNews.View {
 
     override fun showArticles(articlesList: List<ArticlesResponse>) {
         setUpRecyclerView(articlesList as MutableList)
+        PreferencesUtils.setNewsFavoriteList(articlesList)
     }
 
     override fun showProgress(isShow: Boolean) {
@@ -59,7 +61,7 @@ class NewsFragment : Fragment() , ContractNews.View {
     fun setUpRecyclerView(mArticlesList: MutableList<ArticlesResponse>){
         news_recycler.setHasFixedSize(true)
         news_recycler.layoutManager = LinearLayoutManager(requireContext())
-        mAdapter.NewsAdapter(mArticlesList, requireContext())
+        mAdapter.NewsAdapter(mArticlesList, requireContext(),this)
         news_recycler.adapter = mAdapter
     }
 

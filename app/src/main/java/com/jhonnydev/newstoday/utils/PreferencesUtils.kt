@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 
 
 object PreferencesUtils {
@@ -25,5 +27,23 @@ object PreferencesUtils {
         mSharedPref!!.edit().remove(key).apply()
     }
 
+
+    fun setNewsFavoriteList(apkList: List<ArticlesResponse>) {
+        val gson = Gson()
+        val json = gson.toJson(apkList)
+        val editor = mSharedPref!!.edit()
+        editor.putString(KeyPreferences.PREF_KEY_FAVORITES_LIST.value, json.toString())
+        editor.apply()
+
+    }
+
+    fun getNewsFavoriteList(): List<ArticlesResponse> {
+        val gson = Gson()
+        val jsonPreferences = mSharedPref!!.getString(KeyPreferences.PREF_KEY_FAVORITES_LIST.value, "")
+        return if(jsonPreferences.isNullOrEmpty())
+            emptyList()
+        else
+            gson.fromJson(jsonPreferences, object : TypeToken<List<ArticlesResponse>>() {}.type)
+    }
 
 }

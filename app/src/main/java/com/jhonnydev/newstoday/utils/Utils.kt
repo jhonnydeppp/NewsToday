@@ -18,6 +18,7 @@ import android.util.Log
 import android.webkit.MimeTypeMap
 import com.google.android.material.snackbar.Snackbar
 import com.jhonnydev.newstoday.R
+import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,6 +43,41 @@ object Utils {
         snack_text_view.setTextColor(Color.WHITE)
 
         snackbar.show()
+    }
+
+    fun saveOnFavorites(article: ArticlesResponse){
+        val favoritesNews = PreferencesUtils.getNewsFavoriteList()
+        if(!favoritesNews.isNullOrEmpty())
+            PreferencesUtils.setNewsFavoriteList(listOf(article))
+        else{
+            if(article in favoritesNews){
+                // no hacer nada
+            } else{
+                val mList = favoritesNews as MutableList
+                mList.add(article)
+                PreferencesUtils.setNewsFavoriteList(mList)
+            }
+        }
+    }
+
+    fun deleteOnFavorites(article: ArticlesResponse){
+        val favoritesNews = PreferencesUtils.getNewsFavoriteList()
+        if(!favoritesNews.isNullOrEmpty()){
+            PreferencesUtils.setNewsFavoriteList(listOf(article))
+            if(article in favoritesNews){
+                val mList = favoritesNews as MutableList
+                mList.remove(article)
+                PreferencesUtils.setNewsFavoriteList(mList)
+            }
+        }
+    }
+
+    fun isArticleFavorite(article: ArticlesResponse): Boolean{
+        val favoritesNews = PreferencesUtils.getNewsFavoriteList()
+        return if(!favoritesNews.isNullOrEmpty())
+            false
+        else
+            article in favoritesNews
     }
 
 }
