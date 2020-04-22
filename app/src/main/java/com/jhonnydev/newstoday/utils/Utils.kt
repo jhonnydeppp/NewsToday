@@ -1,27 +1,18 @@
 package com.jhonnydev.newstoday.utils
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import android.widget.Toast
-import android.graphics.drawable.Drawable
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.TextView
-import java.io.InputStream
-import java.net.URL
-import android.util.Base64
-import android.util.Log
-
-import android.webkit.MimeTypeMap
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.jhonnydev.newstoday.R
 import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 object Utils {
 
@@ -77,6 +68,16 @@ object Utils {
             false
         else
             favoritesNews.contains(article)
+    }
+
+    fun boldStart(cadena :String): SpannableString{
+        var indice: Int = 0
+        val miTexto = SpannableString(cadena)
+        val boldSpan1 = StyleSpan(Typeface.BOLD)
+        val fisrtString: String = cadena.substring(0, cadena.indexOf(' '))
+        indice = fisrtString.length
+        miTexto.setSpan(boldSpan1, 0, indice, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        return miTexto
     }
 
 }

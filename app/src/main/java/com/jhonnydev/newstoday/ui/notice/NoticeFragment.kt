@@ -1,11 +1,13 @@
 package com.jhonnydev.newstoday.ui.notice
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.jhonnydev.newstoday.R
@@ -38,10 +40,13 @@ class NoticeFragment : Fragment() ,Toolbar.OnMenuItemClickListener{
         return inflater.inflate(R.layout.fragment_notice, container, false)
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Log.i("--->","url: "+url)
-
+        ww_notice.settings.javaScriptEnabled = true
+        ww_notice.settings.pluginState = WebSettings.PluginState.ON
+        ww_notice.settings.allowFileAccess = true
         initToolbar()
         if(!url.isNullOrEmpty())
             ww_notice.loadUrl(url)

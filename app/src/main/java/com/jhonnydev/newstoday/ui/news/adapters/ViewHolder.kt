@@ -1,6 +1,7 @@
 package com.jhonnydev.newstoday.ui.news.adapters
 
 import android.content.Context
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,10 +34,12 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         Picasso.get().load(mArticlesResponse.urlToImage).placeholder(R.mipmap.ic_search_image).fit()
             .into(imvActicle)
         tvTitle.text = mArticlesResponse.title
-        tvAuthor.text =(context.getString(R.string.author)+" "+ mArticlesResponse.author)
-        tvPublishedAt.text = (context.getString(R.string.published_at)+" "+ mArticlesResponse.publishedAt)
-        tvDescription.text = (context.getString(R.string.description)+" "+ mArticlesResponse.description)
-        tvSource.text = (context.getString(R.string.source)+" "+ mArticlesResponse.source!!.name)
+        tvAuthor.text =Utils.boldStart((context.getString(R.string.author)+" "+ mArticlesResponse.author))
+        tvPublishedAt.text =Utils.boldStart( (context.getString(R.string.published_at)+" "+ mArticlesResponse.publishedAt))
+
+        tvDescription.text =Utils.boldStart(context.getString(R.string.description)
+                +" "+ mArticlesResponse.description)
+        tvSource.text = Utils.boldStart((context.getString(R.string.source)+" "+ mArticlesResponse.source!!.name))
         isFavorite = Utils.isArticleFavorite(mArticlesResponse)
 
         if(isFavorite)

@@ -12,14 +12,14 @@
 
     <string name="notice">Noticia</string>
 
-    <!-- ERRORS -->
+    <!-- INFORMACION DE NOTICIAS -->
     <string name="description">Descripción:</string>
     <string name="title">Título</string>
     <string name="published_at">Publicado en:</string>
     <string name="author">Autor:</string>
     <string name="source">Fuente:</string>
 
-    <!-- ERRORS -->
+    <!-- ERRORES -->
     <string name="error_unknown">Un error desconocido ocurrió.</string>
     <string name="error_timeout">El tiempo de espera del servidor ha expirado.</string>
     <string name="error_network">Error con tu conexión a internet.</string>

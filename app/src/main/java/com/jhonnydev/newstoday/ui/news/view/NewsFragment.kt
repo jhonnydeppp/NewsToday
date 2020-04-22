@@ -50,7 +50,12 @@ class NewsFragment : Fragment() , ContractNews.View {
     }
 
     override fun showProgress(isShow: Boolean) {
-
+        if(tv_loading !=null){
+        if(isShow)
+            tv_loading.visibility = View.VISIBLE
+        else
+            tv_loading.visibility = View.GONE
+        }
     }
 
     override fun makeToast(msg: Int) {
