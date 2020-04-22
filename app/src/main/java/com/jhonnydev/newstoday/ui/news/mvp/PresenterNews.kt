@@ -17,12 +17,10 @@ class PresenterNews(private var view: ContractNews.View?): ContractNews.Presente
     @SuppressLint("CheckResult")
     override fun getNews() {
         view!!.showProgress(true)
-        model.getNews("1c3c18c7f22c49d69e8223c369b1042a","publishedAt","bitcoin","2020-03-21")
+        model.getNews("1c3c18c7f22c49d69e8223c369b1042a","publishedAt","bitcoin","2020-04-21")
             .subscribeWith(object : CallbackHandlingObserver<BaseResponse<List<ArticlesResponse>>>(this, ENDPOINT_NEWS) {
                 override fun onSuccess(data: BaseResponse<List<ArticlesResponse>>) {
                     view?.showProgress(false)
-                    //com.jhonnydev.newstoday.utils.PreferencesUtils.setResponseDataLogin(data.data)
-                    //view?.getDataLogin(data.data)
                     view?.showArticles(data.data!!)
                     Log.i(TAG,"consulta exitosa ")
                 }

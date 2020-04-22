@@ -46,9 +46,7 @@ class NewsFragment : Fragment() , ContractNews.View {
     }
 
     override fun showArticles(articlesList: List<ArticlesResponse>) {
-        //PreferencesUtils.setNewsFavoriteList(articlesList)
         setUpRecyclerView(articlesList as MutableList)
-
     }
 
     override fun showProgress(isShow: Boolean) {

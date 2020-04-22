@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.jhonnydev.newstoday.ui.news.view.NewsFragment"
-        android:label="@string/title_news"
-        tools:layout="@layout/fragment_news" >
+        tools:layout="@layout/fragment_news">
         <action
             android:id="@+id/action_navigation_home_to_notice_fragment"
             app:destination="@id/notice_fragment"
@@ -19,8 +18,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.jhonnydev.newstoday.ui.favorites.view.FavoritesFragment"
-        android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_navigation_dashboard_to_notice_fragment"
             app:destination="@id/notice_fragment"
@@ -30,6 +28,5 @@
     <fragment
         android:id="@+id/notice_fragment"
         android:name="com.jhonnydev.newstoday.ui.notice.NoticeFragment"
-        android:label="fragment_notice"
         tools:layout="@layout/fragment_notice" />
 </navigation>

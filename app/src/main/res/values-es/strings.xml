@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News Today</string>
+    <string name="title_news">Noticias</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="article_image_content_descriontion">Una imagen de la noticia actual</string>
+    <string name="article_image_favorite_content_descriontion">Una imagen para saber si el articulo
+    es favorito o no</string>
+
+    <string name="add_favotire">Agregar a favoritos</string>
+    <string name="remove_favotire">Eliminar de favoritos</string>
+
+    <string name="notice">Noticia</string>
+
+    <!-- ERRORS -->
+    <string name="description">Descripción:</string>
+    <string name="title">Título</string>
+    <string name="published_at">Publicado en:</string>
+    <string name="author">Autor:</string>
+    <string name="source">Fuente:</string>
+
+    <!-- ERRORS -->
+    <string name="error_unknown">Un error desconocido ocurrió.</string>
+    <string name="error_timeout">El tiempo de espera del servidor ha expirado.</string>
+    <string name="error_network">Error con tu conexión a internet.</string>
+    <string name="error_badrequest">Has hecho una solicitud incorrecta.</string>
+    <string name="error_server">Error en el servidor.</string>
+    <string name="error_info">Error Información .</string>
+
+
+</resources>

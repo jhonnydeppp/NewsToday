@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_item"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp"
+    android:background="@drawable/selector_custom">
 
     <ImageView
         android:id="@+id/imv_acticle"
@@ -27,10 +31,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/description"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_published_at"
         app:layout_constraintStart_toStartOf="@+id/tv_author"
-        app:layout_constraintTop_toBottomOf="@+id/tv_published_at" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_published_at"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_title"

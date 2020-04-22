@@ -28,6 +28,24 @@ object PreferencesUtils {
     }
 
 
+    fun setCurrentArticle(apkList: ArticlesResponse) {
+        val gson = Gson()
+        val json = gson.toJson(apkList)
+        val editor = mSharedPref!!.edit()
+        editor.putString(KeyPreferences.PREF_KEY_CURRENT_ARTICLE.value, json.toString())
+        editor.apply()
+
+    }
+
+    fun getCurrentArticle(): ArticlesResponse? {
+        val gson = Gson()
+        val jsonPreferences = mSharedPref!!.getString(KeyPreferences.PREF_KEY_CURRENT_ARTICLE.value, "")
+        return if(jsonPreferences.isNullOrEmpty())
+            null
+        else
+            gson.fromJson(jsonPreferences, object : TypeToken<ArticlesResponse>() {}.type)
+    }
+
     fun setNewsFavoriteList(apkList: List<ArticlesResponse>) {
         val gson = Gson()
         val json = gson.toJson(apkList)

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jhonnydev.newstoday.R
 import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 import com.jhonnydev.newstoday.ui.news.view.NewsFragment
+import com.jhonnydev.newstoday.utils.PreferencesUtils
 import com.jhonnydev.newstoday.utils.Utils
 import com.squareup.picasso.Picasso
 
@@ -62,7 +63,9 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
 
         clItem.setOnClickListener{
+            PreferencesUtils.setCurrentArticle(mArticlesResponse)
             val bundle = bundleOf("url" to mArticlesResponse.url)
+
             if(isNewsFragment)
                 currentFragment.findNavController().navigate(R.id.action_navigation_home_to_notice_fragment,bundle)
             else
