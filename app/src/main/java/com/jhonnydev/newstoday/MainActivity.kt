@@ -25,6 +25,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         PreferencesUtils.init(this)
-        PreferencesUtils.clearPreference()
+        //PreferencesUtils.clearPreference()
     }
 }

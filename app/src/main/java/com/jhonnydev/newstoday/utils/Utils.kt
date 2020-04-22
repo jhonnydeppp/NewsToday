@@ -47,10 +47,10 @@ object Utils {
 
     fun saveOnFavorites(article: ArticlesResponse){
         val favoritesNews = PreferencesUtils.getNewsFavoriteList()
-        if(!favoritesNews.isNullOrEmpty())
+        if(favoritesNews.isNullOrEmpty())
             PreferencesUtils.setNewsFavoriteList(listOf(article))
         else{
-            if(article in favoritesNews){
+            if(favoritesNews.contains(article)){
                 // no hacer nada
             } else{
                 val mList = favoritesNews as MutableList
@@ -63,8 +63,7 @@ object Utils {
     fun deleteOnFavorites(article: ArticlesResponse){
         val favoritesNews = PreferencesUtils.getNewsFavoriteList()
         if(!favoritesNews.isNullOrEmpty()){
-            PreferencesUtils.setNewsFavoriteList(listOf(article))
-            if(article in favoritesNews){
+            if(favoritesNews.contains(article)){
                 val mList = favoritesNews as MutableList
                 mList.remove(article)
                 PreferencesUtils.setNewsFavoriteList(mList)
@@ -74,10 +73,10 @@ object Utils {
 
     fun isArticleFavorite(article: ArticlesResponse): Boolean{
         val favoritesNews = PreferencesUtils.getNewsFavoriteList()
-        return if(!favoritesNews.isNullOrEmpty())
+        return if(favoritesNews.isNullOrEmpty())
             false
         else
-            article in favoritesNews
+            favoritesNews.contains(article)
     }
 
 }

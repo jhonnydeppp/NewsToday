@@ -13,16 +13,19 @@ class NewsAdapter : RecyclerView.Adapter<ViewHolder>() {
     var mArticlesList: MutableList<ArticlesResponse>  = ArrayList()
     lateinit var context:Context
     lateinit var currentFragment: Fragment
+    var mInterface: ViewHolder.HolderInterface? = null
 
-    fun NewsAdapter(mArticlesList: MutableList<ArticlesResponse>, context: Context,currentFragment: Fragment) {
+    fun NewsAdapter(mArticlesList: MutableList<ArticlesResponse>, context: Context
+                    ,currentFragment: Fragment, mInterface: ViewHolder.HolderInterface?) {
         this.mArticlesList = mArticlesList
         this.context = context
         this.currentFragment = currentFragment
+        this.mInterface = mInterface
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mArticlesList.get(position)
-        holder.bind(item,context,currentFragment)
+        holder.bind(item,context,currentFragment,mInterface)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

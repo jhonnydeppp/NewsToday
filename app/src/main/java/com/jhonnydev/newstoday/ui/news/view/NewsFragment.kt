@@ -46,8 +46,9 @@ class NewsFragment : Fragment() , ContractNews.View {
     }
 
     override fun showArticles(articlesList: List<ArticlesResponse>) {
+        //PreferencesUtils.setNewsFavoriteList(articlesList)
         setUpRecyclerView(articlesList as MutableList)
-        PreferencesUtils.setNewsFavoriteList(articlesList)
+
     }
 
     override fun showProgress(isShow: Boolean) {
@@ -59,10 +60,12 @@ class NewsFragment : Fragment() , ContractNews.View {
     }
 
     fun setUpRecyclerView(mArticlesList: MutableList<ArticlesResponse>){
-        news_recycler.setHasFixedSize(true)
-        news_recycler.layoutManager = LinearLayoutManager(requireContext())
-        mAdapter.NewsAdapter(mArticlesList, requireContext(),this)
-        news_recycler.adapter = mAdapter
+    if(news_recycler!=null) {
+        news_recycler!!.setHasFixedSize(true)
+        news_recycler!!.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter.NewsAdapter(mArticlesList, requireContext(), this,null)
+        news_recycler!!.adapter = mAdapter
+    }
     }
 
 }
