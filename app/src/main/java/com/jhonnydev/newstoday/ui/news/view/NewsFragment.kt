@@ -7,13 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jhonnydev.newstoday.R
+import com.jhonnydev.newstoday.ui.news.adapters.NewsAdapter
+import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 import com.jhonnydev.newstoday.ui.news.mvp.ContractNews
 import com.jhonnydev.newstoday.ui.news.mvp.PresenterNews
 import com.jhonnydev.newstoday.utils.Utils
+import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : Fragment() , ContractNews.View {
 
+    private val mAdapter : NewsAdapter = NewsAdapter()
     private var presenter: PresenterNews = PresenterNews(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,7 @@ class NewsFragment : Fragment() , ContractNews.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.getNews()
+        news_recycler
     }
 
     companion object {
@@ -38,12 +44,23 @@ class NewsFragment : Fragment() , ContractNews.View {
             NewsFragment()
     }
 
+    override fun showArticles(articlesList: List<ArticlesResponse>) {
+        setUpRecyclerView(articlesList as MutableList)
+    }
+
     override fun showProgress(isShow: Boolean) {
 
     }
 
     override fun makeToast(msg: Int) {
         Utils.makeToast(requireContext(), getString(msg))
+    }
+
+    fun setUpRecyclerView(mArticlesList: MutableList<ArticlesResponse>){
+        news_recycler.setHasFixedSize(true)
+        news_recycler.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter.NewsAdapter(mArticlesList, requireContext())
+        news_recycler.adapter = mAdapter
     }
 
 }

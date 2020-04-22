@@ -2,7 +2,7 @@ package com.jhonnydev.newstoday.ui.news.models
 
 import com.google.gson.annotations.SerializedName
 
-data class ActiclesResponse(
+data class ArticlesResponse(
 
 	@field:SerializedName("publishedAt")
 	val publishedAt: String? = null,

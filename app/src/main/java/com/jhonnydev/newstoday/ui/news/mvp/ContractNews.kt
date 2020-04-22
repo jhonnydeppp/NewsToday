@@ -1,6 +1,7 @@
 package com.jhonnydev.newstoday.ui.news.mvp
 
 import com.jhonnydev.newstoday.base.mvp.BaseContract
+import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 
 interface ContractNews {
     //Presentador
@@ -12,6 +13,7 @@ interface ContractNews {
     }
     //VIEWs
     interface View: BaseContract.View{
+        fun showArticles( articles : List<ArticlesResponse>)
     }
 
 

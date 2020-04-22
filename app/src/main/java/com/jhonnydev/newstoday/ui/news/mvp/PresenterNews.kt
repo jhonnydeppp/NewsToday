@@ -6,7 +6,7 @@ import com.jhonnydev.newstoday.R
 
 import com.jhonnydev.newstoday.base.models.BaseResponse
 import com.jhonnydev.newstoday.base.observer.CallbackHandlingObserver
-import com.jhonnydev.newstoday.ui.news.models.ActiclesResponse
+import com.jhonnydev.newstoday.ui.news.models.ArticlesResponse
 
 class PresenterNews(private var view: ContractNews.View?): ContractNews.Presenter {
 
@@ -18,11 +18,12 @@ class PresenterNews(private var view: ContractNews.View?): ContractNews.Presente
     override fun getNews() {
         view!!.showProgress(true)
         model.getNews("1c3c18c7f22c49d69e8223c369b1042a","publishedAt","bitcoin","2020-03-21")
-            .subscribeWith(object : CallbackHandlingObserver<BaseResponse<List<ActiclesResponse>>>(this, ENDPOINT_NEWS) {
-                override fun onSuccess(data: BaseResponse<List<ActiclesResponse>>) {
+            .subscribeWith(object : CallbackHandlingObserver<BaseResponse<List<ArticlesResponse>>>(this, ENDPOINT_NEWS) {
+                override fun onSuccess(data: BaseResponse<List<ArticlesResponse>>) {
                     view?.showProgress(false)
                     //com.jhonnydev.newstoday.utils.PreferencesUtils.setResponseDataLogin(data.data)
                     //view?.getDataLogin(data.data)
+                    view?.showArticles(data.data!!)
                     Log.i(TAG,"consulta exitosa ")
                 }
 
